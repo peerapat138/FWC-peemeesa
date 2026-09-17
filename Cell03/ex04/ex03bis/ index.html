@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="todo.js" defer></script>
+    <title> Toodo List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+    * {
+        font-family: "Roboto", sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .todo-contain {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgb(179, 179, 179);
+        border-radius: 16px;
+        gap: 10px;
+        padding: 20px;
+    }
+
+    button {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: none;
+        cursor: pointer;
+        transition: all 0.125s;
+    }
+
+    .addNewBtn {
+        width: 100%;
+        border-radius: 0.25rem;
+        background-color: #31a342;
+        color: white;
+        padding: 20px 20px;
+        font-size: 16px;
+    }
+
+    .addNewBtn:hover {
+        background-color: #2d963d;
+    }
+
+    .addNewBtn:active {
+        background-color: #288536;
+    }
+
+    .todoItem {
+        border-radius: 0.25rem;
+        background-color: #eeeeee;
+        color: black;
+        padding: 1rem;
+        font-size: 1rem;
+        text-align: start;
+    }
+
+    .todoItem:hover {
+        background-color: #ce2929;
+        color: white;
+    }
+
+    .todoItem:active {
+        background-color: #bb2424;
+        color: white;
+    }
+
+
+
+    #ft_list {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0.25rem;
+    }
+
+</style>
+<body>
+    <section class="container">
+        <div class="todo-contain">
+            <h1> TodoList! </h1>
+            <button class="addNewBtn" id="addBtn">Add New Todo list</button>
+            <div id="ft_list"></div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explode this balloon</title>
+
+    <link rel="stylesheet" href="balloon.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <div id="balloon"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            const colors = ["red", "green", "blue"];
+            let colorIndex = 0;
+
+            // Click balloon
+            $("#balloon").on("click", function () {
+
+                let balloon = $(this);
+                let size = parseInt(balloon.css("width"));
+
+                if (size >= 420) {
+
+                    // Reset
+                    size = 200;
+                    colorIndex = 0;
+
+                } else {
+
+                    // Increase size
+                    size += 10;
+
+                    // Change color
+                    colorIndex = (colorIndex + 1) % colors.length;
+                }
+
+                balloon.css({
+                    "width": size + "px",
+                    "height": size + "px",
+                    "background-color": colors[colorIndex]
+                });
+
+            });
+
+
+            // Mouse leaves balloon
+            $("#balloon").on("mouseleave", function () {
+
+                let balloon = $(this);
+                let size = parseInt(balloon.css("width"));
+
+                if (size > 200) {
+
+                    // Decrease size
+                    size -= 5;
+
+                    // Change color backward
+                    colorIndex =
+                        (colorIndex - 1 + colors.length) % colors.length;
+
+                    balloon.css({
+                        "width": size + "px",
+                        "height": size + "px",
+                        "background-color": colors[colorIndex]
+                    });
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

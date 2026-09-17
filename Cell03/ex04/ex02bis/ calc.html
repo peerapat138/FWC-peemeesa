@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    .container {
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #calForm {
+        width: 300px;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 30px;
+        border: 1px solid gray;
+        border-radius: 20px;
+        box-shadow: 12px 11px 35px -8px rgb(169, 169, 169);
+    }
+
+    #val1, #val2, #op {
+        height: 30px;
+        border-radius: 8px;
+        padding: 0px 24px;
+        border: 1px solid gray;
+    }
+
+    #op {
+        cursor: pointer;
+    }
+
+    #calBtn {
+        width: 300px;
+        height: 40px;
+        border-radius: 12px;
+        border: 1px solid gray;
+        background-color: rgb(137, 45, 183);
+        color: white;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <section class="container">
+        <form id="calForm">
+            <h1> Calculator </h1>
+            <input id='val1' type="text" value="" placeholder="enter a number" required>
+            <select id="op">
+                <option value="+"> + </option>
+                <option value="-"> - </option>
+                <option value="*"> * </option>
+                <option value="/"> / </option>
+                <option value="%"> % </option>
+            </select>
+            <input id='val2' type="text" value="" placeholder="enter a number" required>
+            <button id='calBtn' type="submit">Try me!</button>
+        </form>
+    </section>
+</body>
+<script>
+    $(document).ready(function() {
+
+        setInterval(() => {
+            alert("Please, use me...");
+        }, 30000);
+        
+        $("#calForm").submit(function(event) {
+            event.preventDefault();
+            let value1 = $("#val1").val();
+            let value2 = $("#val2").val();
+            let opar = $("#op").val();
+
+            if (isNaN(value1) || isNaN(value2)) {
+                alert("Error :(");
+                console.log("Error :(");
+                return;
+            }
+
+            value1 = parseFloat(value1);
+            value2 = parseFloat(value2);
+
+            if (value1 < 0 || value2 < 0) {
+                alert("Error :(");
+                console.log("Error :(");
+                return;
+            }
+
+            if ((opar == "/" || opar == "%") && (value1 == 0 || value2 == 0)) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            const result = eval(`${value1} ${opar} ${value2}`);
+            alert("Result : " + result);
+            console.log(result);
+        });
+    });
+</script>
+</html>
